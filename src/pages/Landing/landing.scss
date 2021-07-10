@@ -1,0 +1,39 @@
+.container {
+    display: flex;
+    ul {
+        list-style: none;
+        margin: 0;
+        padding: 40px;
+    }
+    .loader-wrap {
+        text-align: center;
+    }
+    .left-content {
+        width: 45%;
+    }
+    .right-content {
+        width: 55%;
+        .feature-content {
+        }
+    }
+    .button-wrap {
+        display: flex;
+        margin-left: auto;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px;
+    }
+    .btn {
+        border: none;
+        padding: 0.5rem;
+    }
+    .previous {
+        background-color: #f1f1f1;
+        color: black;
+    }
+
+    .next {
+        background-color: #04aa6d;
+        color: white;
+    }
+}

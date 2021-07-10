@@ -1,8 +1,8 @@
 const ApiKey = 'dvTJLAYNgZId0MdkAsJBNZXhMTNRr9bG'; 
 const apiKeyQueryParam = `api-key=${ApiKey}`
 const endPoints = {
-    getLatestNews: `/content/all/all.json?${apiKeyQueryParam}`,
-    getFeaturedNews: `/content/nyt/business.json?${apiKeyQueryParam}`
+    getLatestNews: `articlesearch.json?${apiKeyQueryParam}&q=latest`,
+    getFeaturedNews: `articlesearch.json?${apiKeyQueryParam}&q=featured`
 }
 
 export default endPoints;

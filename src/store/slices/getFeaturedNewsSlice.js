@@ -1,16 +1,16 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import endPoints from '../../api/apiEndpoints';
-import {get} from '../../services/getService';
+import { get } from '../../services/getService';
 const intialState = {
     loading: false,
-    datas: []
+    featuredDatas: []
 };
 
 export const getFeaturedNewsAsync = createAsyncThunk('getFeaturedNews/getFeaturedNewsAsync', async () => {
     const response = await get(endPoints.getFeaturedNews);
-        if (response.statusText === 'OK') {
-            return response.data.results;
-        }
+    if (response.statusText === 'OK') {
+        return response.data.response.docs;
+    }
 });
 
 export const getFeaturedNewsSlice = createSlice({
@@ -22,9 +22,8 @@ export const getFeaturedNewsSlice = createSlice({
             state.loading = true;
         },
         [getFeaturedNewsAsync.fulfilled]: (state, { payload }) => {
-            console.log(payload)
             state.loading = false;
-            state.datas = payload
+            state.featuredDatas = payload
         },
     }
 })

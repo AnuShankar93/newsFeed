@@ -3,14 +3,17 @@ import endPoints from '../../api/apiEndpoints';
 import {get} from '../../services/getService';
 const intialState = {
     loading: false,
-    datas: []
+    latestDatas: []
 };
 
 export const getLatestNewsAsync = createAsyncThunk('getLatestNews/getLatestNewsAsync', async () => {
     const response = await get(endPoints.getLatestNews);
-        if (response.statusText === 'OK') {
-            return response.data.results;
-        }
+    if (response.statusText === 'OK') {
+        console.log(response)
+        const {docs} =response.data.response;
+        console.log(typeof docs)
+        return response.data.response.docs;
+    }
 });
 
 export const getLatestNewsSlice = createSlice({
@@ -23,7 +26,7 @@ export const getLatestNewsSlice = createSlice({
         },
         [getLatestNewsAsync.fulfilled]: (state, { payload }) => {
             state.loading = false;
-            state.datas = payload
+            state.latestDatas = payload
         },
     }
 })
