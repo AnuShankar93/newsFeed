@@ -6,27 +6,26 @@ const intialState = {
     datas: []
 };
 
-export const getFeaturedNewsAsync = createAsyncThunk('getFeaturedNews/getFeaturedNewsAsync', async () => {
-    const response = await get(endPoints.getFeaturedNews);
+export const getLatestNewsAsync = createAsyncThunk('getLatestNews/getLatestNewsAsync', async () => {
+    const response = await get(endPoints.getLatestNews);
         if (response.statusText === 'OK') {
             return response.data.results;
         }
 });
 
-export const getFeaturedNewsSlice = createSlice({
-    name: 'getFeaturedNews',
+export const getLatestNewsSlice = createSlice({
+    name: 'getLatestNews',
     initialState: intialState,
     reducers: {},
     extraReducers: {
-        [getFeaturedNewsAsync.pending]: (state, { payload }) => {
+        [getLatestNewsAsync.pending]: (state, { payload }) => {
             state.loading = true;
         },
-        [getFeaturedNewsAsync.fulfilled]: (state, { payload }) => {
-            console.log(payload)
+        [getLatestNewsAsync.fulfilled]: (state, { payload }) => {
             state.loading = false;
             state.datas = payload
         },
     }
 })
 
-export default getFeaturedNewsSlice.reducer;
+export default getLatestNewsSlice.reducer;

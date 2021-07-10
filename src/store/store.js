@@ -1,8 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
-import getFeaturedNewsSlice from './slices/getFeaturedNewsSlice';
-
+import getFeaturedNewsSliceReducer from './slices/getFeaturedNewsSlice';
+import getLatestNewsSliceReducer from "./slices/getLatestNewsSlice";
 const store = configureStore({
-    reducer: {getFeaturedNewsSlice}
+    reducer: {
+       featured: getFeaturedNewsSliceReducer,
+       latest: getLatestNewsSliceReducer
+    }
 });
 
 export default store;
